@@ -11,9 +11,7 @@ CREATE TABLE IF NOT EXISTS medico (
     nome VARCHAR(100),
     crm VARCHAR(20) UNIQUE,
     especialidade VARCHAR(50),
-    telefone VARCHAR(15),
-    cpf_paciente VARCHAR(14),
-    FOREIGN KEY (cpf_paciente) REFERENCES paciente(cpf)
+    telefone VARCHAR(15)
 );
 
 CREATE TABLE IF NOT EXISTS ordem (
@@ -37,7 +35,7 @@ CREATE TABLE IF NOT EXISTS formula (
 
 CREATE TABLE IF NOT EXISTS materia_prima (
     id_materia_prima INT PRIMARY KEY,
-    nome_cientifico VARCHAR(100),
+    nome_quimico VARCHAR(100),
     nome_comercial VARCHAR(100),
     quantidade DECIMAL(10,2),
     composicao VARCHAR(100),
