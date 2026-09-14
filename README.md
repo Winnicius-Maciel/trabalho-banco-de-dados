@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     PACIENTE ||--o{ MEDICO : "consulta"
     MEDICO ||--o{ ORDEM : "prescreve"
@@ -30,7 +31,7 @@ erDiagram
     }
 
     FORMULA {
-        int id_formula PK
+        id_formula int PK
         varchar receita
         varchar uso
         varchar imagem
