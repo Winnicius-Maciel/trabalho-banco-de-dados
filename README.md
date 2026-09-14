@@ -1,3 +1,13 @@
+# Projeto: Banco de Dados para Farmácia de Manipulação
+
+## Objetivo Geral
+Criar uma estrutura relacional para gerenciar o fluxo de prescrições médicas, conectando os dados dos pacientes aos médicos, e controlando as ordens de manipulação, fórmulas, matérias-primas e seus respectivos lotes.
+
+## Público-Alvo
+Farmacêuticos, técnicos de laboratório e atendentes que precisam rastrear a origem da receita até o controle de qualidade do lote utilizado.
+
+## Modelo de Dados (Diagrama ER)
+
 ```mermaid
 erDiagram
     PACIENTE ||--o{ MEDICO : "consulta"
@@ -31,7 +41,7 @@ erDiagram
     }
 
     FORMULA {
-        id_formula int PK
+        int id_formula PK
         varchar receita
         varchar uso
         varchar imagem
