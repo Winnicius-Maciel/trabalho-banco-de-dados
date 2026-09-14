@@ -1,31 +1,63 @@
--- 1. Inserindo dados (DML - INSERT)
-INSERT INTO paciente (cpf, nascimento, telefone, endereco, alergias) 
-VALUES ('111.111.111-11', '1990-05-15', '99999-1111', 'Rua A, 123', 'Dipirona');
+# Projeto: Banco de Dados para Farmácia de Manipulação
 
-INSERT INTO medico (id_medico, nome, crm, especialidade, telefone, cpf_paciente) 
-VALUES (1, 'Dr. Roberto', 'CRM-1234', 'Dermatologista', '99999-2222', '111.111.111-11');
+## Objetivo Geral
+Criar uma estrutura relacional para gerenciar o fluxo de prescrições médicas, conectando os dados dos pacientes aos médicos, e controlando as ordens de manipulação, fórmulas, matérias-primas e seus respectivos lotes.
 
-INSERT INTO ordem (id_ordem, receita, entrega, forma, producao, id_medico) 
-VALUES (1, 'Receita Derma', '2023-11-20', 'Creme', 'Laboratorio 1', 1);
+## Público-Alvo
+Farmacêuticos, técnicos de laboratório e atendentes que precisam rastrear a origem da receita até o controle de qualidade do lote utilizado.
 
-INSERT INTO formula (id_formula, receita, uso, imagem, id_ordem) 
-VALUES (1, 'Receita Derma', 'Uso Tópico Noturno', 'img_creme.jpg', 1);
+## Modelo de Dados (Diagrama ER)
 
-INSERT INTO materia_prima (id_materia_prima, nome_cientifico, nome_comercial, quantidade, composicao, id_formula) 
-VALUES (1, 'Acidum salicylicum', 'Acido Salicilico', 50.50, 'Puro', 1);
+```mermaid
+erDiagram
+    PACIENTE ||--o{ MEDICO : "consulta"
+    MEDICO ||--o{ ORDEM : "prescreve"
+    ORDEM ||--o{ FORMULA : "utiliza"
+    FORMULA ||--o{ MATERIA_PRIMA : "utiliza"
+    MATERIA_PRIMA ||--o{ LOTE : "possui"
 
-INSERT INTO lote (id_lote, fabricacao, validade, quantidade, id_materia_prima) 
-VALUES (1, '2023-10-01', '2025-10-01', 500.00, 1);
-INSERT INTO lote (id_lote, fabricacao, validade, quantidade, id_materia_prima) 
-VALUES (2, '2023-10-05', '2025-10-05', 200.00, 1);
+    PACIENTE {
+        varchar cpf PK
+        date nascimento
+        varchar telefone
+        varchar endereco
+        varchar alergias
+    }
 
--- 2. Atualizando dados (DML - UPDATE)
--- Alterando a quantidade da matéria prima
-UPDATE materia_prima 
-SET quantidade = 45.00 
-WHERE id_materia_prima = 1;
+    MEDICO {
+        int id_medico PK
+        varchar nome
+        varchar crm UK
+        varchar especialidade
+        varchar telefone
+    }
 
--- 3. Deletando dados (DML - DELETE)
--- Apagando o lote 2 que inserimos apenas para teste
-DELETE FROM lote 
-WHERE id_lote = 2;
+    ORDEM {
+        int id_ordem PK
+        varchar receita
+        date entrega
+        varchar forma
+        varchar producao
+    }
+
+    FORMULA {
+        int id_formula PK
+        varchar receita
+        varchar uso
+        varchar imagem
+    }
+
+    MATERIA_PRIMA {
+        int id_materia_prima PK
+        varchar nome_quimico
+        varchar nome_comercial
+        decimal quantidade
+        varchar composicao
+    }
+
+    LOTE {
+        int id_lote PK
+        date fabricacao
+        date validade
+        decimal quantidade
+    }
