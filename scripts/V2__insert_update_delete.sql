@@ -22,15 +22,13 @@ INSERT INTO medico (
     nome,
     crm,
     especialidade,
-    telefone,
-    cpf_paciente
+    telefone
 ) VALUES (
     1,
     'Dr. Roberto',
     'CRM-1234',
     'Dermatologista',
-    '99999-2222',
-    '111.111.111-11'
+    '99999-2222'
 );
 
 
