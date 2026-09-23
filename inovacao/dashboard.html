@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>PharmaClub - Painel do Paciente</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .card { background: #e3f2fd; padding: 15px; border-radius: 6px; margin-top: 20px; }
+        .badges { display: flex; gap: 10px; margin-top: 15px; }
+        .badge { background: #ffca28; padding: 8px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Farmácia Manipulare - Painel do Cliente</h2>
+            <span>Olá, Winnícius Campos</span>
+        </div>
+        
+        <div class="card">
+            <h3>Seu Nível: Nível Prata 🥈</h3>
+            <p>Você tem <strong>1.450 pontos</strong> acumulados. Faltam 550 pontos para o Nível Ouro!</p>
+            <progress value="1450" max="2000" style="width: 100%; height: 20px;"></progress>
+        </div>
+
+        <h3>Suas Conquistas</h3>
+        <div class="badges">
+            <div class="badge">💊 Primeira Fórmula</div>
+            <div class="badge">🔄 Renovação em Dia</div>
+            <div class="badge">⭐ Cliente Fiel</div>
+        </div>
+    </div>
+</body>
+</html>
