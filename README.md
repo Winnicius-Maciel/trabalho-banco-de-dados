@@ -61,3 +61,34 @@ erDiagram
         date validade
         decimal quantidade
     }
+```mermaid
+erDiagram
+    PACIENTE ||--o{ PROGRAMA_FIDELIDADE : possui
+    NIVEL_FIDELIDADE ||--o{ PROGRAMA_FIDELIDADE : classifica
+    PACIENTE ||--o{ PACIENTE_CONQUISTA : desbloqueia
+    CONQUISTAS ||--o{ PACIENTE_CONQUISTA : concede
+
+    PACIENTE {
+        int id_paciente PK
+        string nome
+        string cpf
+    }
+
+    PROGRAMA_FIDELIDADE {
+        int id_fidelidade PK
+        int id_paciente FK
+        int pontos_totais
+        int id_nivel FK
+    }
+
+    NIVEL_FIDELIDADE {
+        int id_nivel PK
+        string nome_nivel
+        int pontos_minimos
+    }
+
+    CONQUISTAS {
+        int id_conquista PK
+        string titulo
+        string descricao
+    }
