@@ -61,7 +61,8 @@ erDiagram
         date validade
         decimal quantidade
     }
-}
+```
+
 ```mermaid
 erDiagram
     PACIENTE ||--o{ PROGRAMA_FIDELIDADE : possui
@@ -93,3 +94,4 @@ erDiagram
         string titulo
         string descricao
     }
+```
